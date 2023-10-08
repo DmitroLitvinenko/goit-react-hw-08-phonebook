@@ -1,9 +1,11 @@
-import { Field, Formik } from 'formik';
+import React from 'react';
+import { Field, Formik, ErrorMessage } from 'formik';
 import * as yup from 'yup';
-import { Form, Button, ErrorMessage } from './ContactForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { Notify } from 'notiflix';
 import { addContact } from 'api/api';
+import { Button, TextField, Box, Typography } from '@mui/material';
+import { Form } from './ContactForm.styled'; // Предполагаем, что у вас есть стилизация ContactForm.styled
 
 const validationSchema = yup.object().shape({
   name: yup
@@ -50,27 +52,42 @@ export const ContactForm = () => {
   };
 
   return (
-    <>
-      <Formik
-        initialValues={initialValues}
-        validationSchema={validationSchema}
-        onSubmit={handlerSubmit}
-      >
-        <Form>
-          <label>
-            <p>Name</p>
-            <Field type="text" name="name" />
-          </label>
+    <Formik
+      initialValues={initialValues}
+      validationSchema={validationSchema}
+      onSubmit={handlerSubmit}
+    >
+      <Form>
+        <Box marginBottom={2}>
+          <Typography variant="body1">Name</Typography>
+          <Field
+            as={TextField}
+            variant="outlined"
+            fullWidth
+            size="small"
+            type="text"
+            name="name"
+          />
           <ErrorMessage component="p" name="name" />
+        </Box>
 
-          <label>
-            <p>Number</p>
-            <Field type="tel" name="number" />
-          </label>
+        <Box marginBottom={2}>
+          <Typography variant="body1">Number</Typography>
+          <Field
+            as={TextField}
+            variant="outlined"
+            fullWidth
+            size="small"
+            type="tel"
+            name="number"
+          />
           <ErrorMessage component="p" name="number" />
-          <Button type="submit">Add contact</Button>
-        </Form>
-      </Formik>
-    </>
+        </Box>
+
+        <Button variant="outlined" type="submit">
+          Add contact
+        </Button>
+      </Form>
+    </Formik>
   );
 };

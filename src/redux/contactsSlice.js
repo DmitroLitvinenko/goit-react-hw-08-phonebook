@@ -19,7 +19,7 @@ const handleFulfilledAddContact = (state, action) => {
 };
 const handleFulfilledRemoveContact = (state, action) => {
   state.isLoading = false;
-  state.items = state.items.filter(contact => contact.id !== action.payload);
+  state.items = state.items.filter(contact => contact.id !== action.payload.id);
   Notify.success('Contact removed successfully');
 };
 
