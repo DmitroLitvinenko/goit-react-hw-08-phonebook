@@ -63,7 +63,6 @@ export const ContactForm = () => {
           <Field
             as={TextField}
             variant="outlined"
-            fullWidth
             size="small"
             type="text"
             name="name"
@@ -76,7 +75,6 @@ export const ContactForm = () => {
           <Field
             as={TextField}
             variant="outlined"
-            fullWidth
             size="small"
             type="tel"
             name="number"
