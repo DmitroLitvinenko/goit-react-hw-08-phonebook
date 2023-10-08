@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Notify } from 'notiflix';
 import { addContact } from 'api/api';
 import { Button, TextField, Box, Typography } from '@mui/material';
-import { Form } from './ContactForm.styled'; // Предполагаем, что у вас есть стилизация ContactForm.styled
+import { Form } from './ContactForm.styled';
 
 const validationSchema = yup.object().shape({
   name: yup

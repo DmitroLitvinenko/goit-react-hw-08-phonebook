@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts, removeContact } from 'api/api';
 import { getFilter } from 'redux/filterSlice';
-import { List, ListItem, IconButton, Typography, Box } from '@mui/material';
+import { List, IconButton, Typography, Box, ListItem } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 export const ContactList = () => {
@@ -20,7 +20,10 @@ export const ContactList = () => {
         {contacts
           .filter(({ name }) => name.toLowerCase().includes(filter))
           .map(({ id, name, number }) => (
-            <ListItem key={id}>
+            <ListItem
+              sx={{ display: 'flex', justifyContent: 'space-between' }}
+              key={id}
+            >
               <Typography>
                 {name}: {number}
               </Typography>
